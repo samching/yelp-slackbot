@@ -77,13 +77,12 @@ controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 
 controller.hears(['help!!!', 'help me', 'help'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.api.users.info({ user: message.user }, (err, res) => {
     if (res) {
-      bot.reply(message, `I got you, ${res.user.name}! You can ask me to help you find the best food near you!`);
+      bot.reply(message, `I got you, ${res.user.name}! You can ask me to help you find the best food near you! Try "hungry" or "famished" or "food"! `);
     } else {
       bot.reply(message, 'Hello there!');
     }
   });
 });
-
 
 // Yelp Integration
 const yelpClient = yelp.client(process.env.YELP_API_KEY);
@@ -144,6 +143,10 @@ controller.hears(['food', 'hungry', 'famished', 'starving'], ['direct_message', 
   });
 });
 
+controller.hears('^[A-z]+$', ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
+  // do something to respond to message
+  bot.reply(message, 'Sorry I don\'t understand you - try help or hungry for better options!');
+});
 
 // START THE SERVER
 // =============================================================================
