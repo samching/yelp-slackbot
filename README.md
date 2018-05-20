@@ -1,9 +1,3 @@
-# starter express app template
+# Slackbot
 
-* node with babel
-* expressjs
-* airbnb eslint rules
-
-Procfile set up to run on [heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app)
-
-
+Sam's Slackbot for [CS52 SA10](http://cs52.me/assignments/sa/slack-bot/)
