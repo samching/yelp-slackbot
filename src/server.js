@@ -102,7 +102,6 @@ controller.hears(['food', 'hungry', 'famished', 'starving'], ['direct_message', 
 
         convo.addQuestion(`Now, ${res.user.name}, what are you craving? (Example: Sushi)`, (response, convoCont) => {
           foodChoice = response.text;
-          console.log(foodChoice);
 
           if (location.length > 0 && foodChoice.length > 0) {
             yelpClient.search({
@@ -112,7 +111,6 @@ controller.hears(['food', 'hungry', 'famished', 'starving'], ['direct_message', 
               convo.say(`We have found the best place for ${foodChoice}: ${res.jsonBody.businesses[0].name}`);
 
               convo.say(`It has ${res.jsonBody.businesses[0].review_count} reviews on Yelp, with an average rating of ${res.jsonBody.businesses[0].rating}. Call ${res.jsonBody.businesses[0].phone} if you wanna order food now!`);
-              console.log(res.jsonBody.businesses[0]);
 
               const attachments = {
                 attachments: [
